@@ -51,6 +51,32 @@ Each staging model:
 
 A `not_null` test on `fct_monthly_company_spend.month` intermittently fails despite no null `transaction_date` values in the source. This may be caused by a stale cache or schema mismatch and will be resolved separately.
 
+## Real-world considerations
+In a real multi-tenant environment, the macro could dynamically UNION across schemas using information_schema. Here, we simulate that by selecting from unified seed files with a schema_name tag.
+Here's the Jinja macro you could use in a real multi-tenant environment where each tenant has its own schema and identical table structure (e.g., comp_001.sde_users, comp_002.sde_users, etc.):
+
+```
+{% macro union_tenant_tables(raw_table_name) %}
+  {# Get all tenant schema names from a seed or dimension table #}
+  {% set tenant_schemas = dbt_utils.get_column_values(ref('sde_companies'), 'schema_name') %}
+
+  {% set union_queries = [] %}
+
+  {% for schema in tenant_schemas %}
+    {% set query %}
+      SELECT
+          '{{ schema }}' AS schema_name
+        , *
+      FROM {{ schema }}.{{ raw_table_name }}
+    {% endset %}
+
+    {% do union_queries.append(query) %}
+  {% endfor %}
+
+  {{ return(union_queries | join('\nUNION ALL\n')) }}
+{% endmacro %}
+```
+
 ## Usage
 
 ```bash
