@@ -9,11 +9,38 @@ The project transforms tenant-specific financial data into unified, analysis-rea
 - `stg/` for cleaning and standardizing raw inputs
 - `marts/` for business-facing reporting tables
 
-## Multi-Tenancy Strategy
+## Multi-Tenancy Approach
 
 Rather than querying across multiple schemas, tenant data is pre-unified via seeds, with tenant identity preserved through the `schema_name` column. A custom macro (`union_tenant_tables`) reads from each seed file and returns the full unified dataset. No schema iteration or dynamic SQL is required, which simplifies the project and matches the structure of the take-home prompt.
 
-## Model Breakdown
+### Real-world considerations
+In a real multi-tenant environment, the macro could dynamically UNION across schemas using information_schema. Here, we simulate that by selecting from unified seed files with a schema_name tag.
+Here's the Jinja macro you could use in a real multi-tenant environment where each tenant has its own schema and identical table structure (e.g., comp_001.sde_users, comp_002.sde_users, etc.):
+
+jinja
+```
+{% macro union_tenant_tables(raw_table_name) %}
+  {# Get all tenant schema names from a seed or dimension table #}
+  {% set tenant_schemas = dbt_utils.get_column_values(ref('sde_companies'), 'schema_name') %}
+
+  {% set union_queries = [] %}
+
+  {% for schema in tenant_schemas %}
+    {% set query %}
+      SELECT
+          '{{ schema }}' AS schema_name
+        , *
+      FROM {{ schema }}.{{ raw_table_name }}
+    {% endset %}
+
+    {% do union_queries.append(query) %}
+  {% endfor %}
+
+  {{ return(union_queries | join('\nUNION ALL\n')) }}
+{% endmacro %}
+```
+
+## Modeling Decisions
 
 ### Staging Layer (`stg/`)
 
@@ -39,6 +66,14 @@ Each staging model:
 - `not_null` and optional `unique` tests on key columns in marts
 - Manual SQL sanity checks to validate grain and joinability
 
+## Performance Considerations
+This project uses views for staging models to prioritize modularity and rapid iteration. However, for real-world datasets at scale (e.g., multi-tenant transaction tables exceeding 200GB), performance tuning would be essential. 
+Key strategies include:
+Clustering Keys: On large fact tables, raw, or stg tables like fct_monthly_company_spend raw corp_card_transactions, clustering by company_id, transaction_date, or both would improve query pruning and scan efficiency in Snowflake.
+Transient Tables in Staging: If the data volume in staging models grows significantly, materializing them as transient tables instead of views or ephemeral models can drastically reduce recomputation costs and improve downstream query performance.
+Incremental Models: For append-only transactional data, converting staging or fact models to incremental materializations would also reduce compute cost over time.
+In this take-home, I avoided those techniques to limit complexity, but the codebase can readily accommodate such modifications as scale demands increase.
+
 ## Configuration Details
 
 - Staging models are materialized as `views`
@@ -50,32 +85,6 @@ Each staging model:
 ## Known Issue
 
 A `not_null` test on `fct_monthly_company_spend.month` intermittently fails despite no null `transaction_date` values in the source. This may be caused by a stale cache or schema mismatch and will be resolved separately.
-
-## Real-world considerations
-In a real multi-tenant environment, the macro could dynamically UNION across schemas using information_schema. Here, we simulate that by selecting from unified seed files with a schema_name tag.
-Here's the Jinja macro you could use in a real multi-tenant environment where each tenant has its own schema and identical table structure (e.g., comp_001.sde_users, comp_002.sde_users, etc.):
-
-```
-{% macro union_tenant_tables(raw_table_name) %}
-  {# Get all tenant schema names from a seed or dimension table #}
-  {% set tenant_schemas = dbt_utils.get_column_values(ref('sde_companies'), 'schema_name') %}
-
-  {% set union_queries = [] %}
-
-  {% for schema in tenant_schemas %}
-    {% set query %}
-      SELECT
-          '{{ schema }}' AS schema_name
-        , *
-      FROM {{ schema }}.{{ raw_table_name }}
-    {% endset %}
-
-    {% do union_queries.append(query) %}
-  {% endfor %}
-
-  {{ return(union_queries | join('\nUNION ALL\n')) }}
-{% endmacro %}
-```
 
 ## Usage
 
