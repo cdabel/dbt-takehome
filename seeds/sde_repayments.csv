@@ -1,0 +1,8 @@
+repayment_id,company_id,repayment_date,repayment_amount_usd,method
+rep_01,comp_001,2024-04-01T10:00:00Z,200.00,ACH
+rep_02,comp_002,2024-04-15T11:00:00Z,75.25,ACH
+rep_03,comp_004,2024-04-20T09:00:00Z,300.00,ACH
+rep_04,comp_001,2024-04-30T10:00:00Z,300.79,ACH
+rep_05,comp_003,2024-05-01T14:00:00Z,120.00,Wire
+rep_06,comp_002,2024-05-02T15:00:00Z,200.00,ACH
+rep_07,comp_004,2024-05-05T12:00:00Z,550.50,ACH

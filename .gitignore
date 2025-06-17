@@ -1,0 +1,6 @@
+*.pem
+*.pub
+target/
+dbt_packages/
+logs/
+

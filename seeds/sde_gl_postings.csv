@@ -1,0 +1,19 @@
+posting_id,company_id,transaction_id,report_id,posting_date,account_number,account_name,account_type,debit_usd,credit_usd,description
+gl_001,comp_001,txn_cc_001,,2024-03-10,6001,Cloud Services Expense,Expense,150.00,,AWS Hosting
+gl_002,comp_001,txn_cc_001,,2024-03-10,1010,Cash - Bank ABC,Asset,,150.00,Payment for AWS Hosting
+gl_003,comp_001,txn_cc_002,er_002,2024-03-12,6002,Software Subscriptions,Expense,49.99,,Zoom Subscription
+gl_004,comp_001,txn_cc_002,er_002,2024-03-12,1010,Cash - Bank ABC,Asset,,49.99,Payment for Zoom
+gl_005,comp_002,txn_cc_003,er_011,2024-03-15,6003,Office Supplies Expense,Expense,75.25,,Staples Order
+gl_006,comp_002,txn_cc_003,er_011,2024-03-15,1010,Cash - Bank XYZ,Asset,,75.25,Payment for Staples
+gl_007,comp_004,txn_cc_004,,2024-03-20,6002,Software Subscriptions,Expense,300.00,,Salesforce CRM
+gl_008,comp_004,txn_cc_004,,2024-03-20,1010,Cash - Bank DEF,Asset,,300.00,Payment for Salesforce
+gl_009,comp_001,txn_cc_005,er_001,2024-03-25,6004,Travel Expense,Expense,450.80,,Flight to SF Conf
+gl_010,comp_001,txn_cc_005,er_001,2024-03-25,1010,Cash - Bank ABC,Asset,,450.80,Payment for Flight
+gl_011,comp_004,txn_cc_007,er_003,2024-04-01,6005,Meals & Entertainment,Expense,550.50,,Client Dinner Prospect X
+gl_012,comp_004,txn_cc_007,er_003,2024-04-01,1010,Cash - Bank DEF,Asset,,550.50,Payment for Client Dinner
+gl_013,comp_002,txn_cc_008,er_004,2024-04-05,6006,Marketing Expense,Expense,200.00,,Meta Ads Apr
+gl_014,comp_002,txn_cc_008,er_004,2024-04-05,1010,Cash - Bank XYZ,Asset,,200.00,Payment for Meta Ads
+gl_015,comp_004,txn_cc_016,er_009,2024-04-25,6005,Meals & Entertainment,Expense,610.00,,Client Entertainment Major Client
+gl_016,comp_004,txn_cc_016,er_009,2024-04-25,1010,Cash - Bank DEF,Asset,,610.00,Payment for Client Entertainment
+gl_017,comp_001,,,2024-04-30,7001,Interest Income,Income,,50.25,Monthly bank interest
+gl_018,comp_001,,,2024-04-30,1010,Cash - Bank ABC,Asset,50.25,,Bank interest received

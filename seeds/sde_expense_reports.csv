@@ -1,0 +1,14 @@
+report_id,user_id,company_id,submitted_at,approved_at,status,report_total_amount_usd,purpose,notes
+er_001,usr_a01,comp_001,2024-03-26T09:00:00Z,2024-03-27T14:00:00Z,APPROVED,450.80,Travel to Conference SF,Flight for Q1 conference
+er_002,usr_a03,comp_001,2024-03-13T10:00:00Z,2024-03-14T11:00:00Z,APPROVED,49.99,Client Software Subscription,Zoom for client calls
+er_003,usr_d02,comp_004,2024-04-02T08:00:00Z,2024-04-03T09:30:00Z,APPROVED,550.50,Client Dinner Q1,Dinner with Prospect X
+er_004,usr_b02,comp_002,2024-04-06T17:00:00Z,2024-04-09T16:00:00Z,APPROVED,200.00,Marketing Campaign Apr,Meta Ads
+er_005,usr_a03,comp_001,2024-04-09T09:30:00Z,2024-04-12T10:00:00Z,APPROVED,15.75,Client Meeting Coffee,Coffee with Client Y
+er_006,usr_g01,comp_007,2024-04-13T11:00:00Z,2024-04-17T15:00:00Z,APPROVED,670.20,Client Onsite Visit LA,Hotel for Client Z
+er_007,usr_d01,comp_004,2024-04-16T08:00:00Z,2024-04-16T10:30:00Z,APPROVED,25.00,Industry Publication Sub,Financial News
+er_008,usr_h01,comp_008,2024-04-21T10:00:00Z,,PENDING,59.99,Sales Tool Subscription,LinkedIn Sales Nav
+er_009,usr_d02,comp_004,2024-04-26T09:00:00Z,2024-04-28T11:00:00Z,APPROVED,610.00,Client Entertainment Apr,Steakhouse with Major Client
+er_010,usr_a03,comp_001,2024-04-29T14:00:00Z,2024-04-30T10:00:00Z,APPROVED,30.00,Team Communication Tool,Slack monthly
+er_011,usr_b01,comp_002,2024-03-16T09:00:00Z,2024-03-16T14:00:00Z,APPROVED,75.25,Office Supplies Mar,Paper and pens
+er_012,usr_a01,comp_001,2024-03-11T08:00:00Z,2024-03-11T09:30:00Z,APPROVED,150.00,Cloud Services Mar,AWS
+er_013,usr_c01,comp_003,2024-05-01T09:00:00Z,,REJECTED,88.50,Tools for site,Not approved budget

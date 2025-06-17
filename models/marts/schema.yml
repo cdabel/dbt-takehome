@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: fct_monthly_company_spend
+    description: Monthly aggregated spend per company
+    columns:
+      - name: company_id
+        tests:
+          - not_null
+      - name: month
+        tests:
+          - not_null
+      - name: total_spend_usd
+      - name: transaction_count

@@ -1,0 +1,5 @@
+company_id,schema_name,company_name,industry,signup_date,employee_count
+comp_001,tenant_comp_001,Innovatech Solutions,Technology,2023-01-15,55
+comp_002,tenant_comp_002,GreenLeaf Organics,Retail,2023-02-20,25
+comp_003,tenant_comp_003,ConstructX Ltd.,Construction,2023-03-10,150
+comp_004,tenant_comp_004,FinPro Services,Finance,2023-04-05,75

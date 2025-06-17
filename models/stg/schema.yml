@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: stg_users
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_corp_card_transactions
+    columns:
+      - name: transaction_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_expense_reports
+    columns:
+      - name: report_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_gl_postings
+    columns:
+      - name: posting_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_repayments
+    columns:
+      - name: repayment_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_companies
+    columns:
+      - name: company_id
+        tests:
+          - not_null
+          - unique

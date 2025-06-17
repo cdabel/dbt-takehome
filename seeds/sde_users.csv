@@ -1,0 +1,7 @@
+schema_name,user_id,company_id,user_name,department,join_date
+tenant_comp_001,usr_a01,comp_001,Alice Wonderland,Engineering,2023-01-20
+tenant_comp_001,usr_a02,comp_001,Bob The Builder,Engineering,2023-02-01
+tenant_comp_002,usr_b01,comp_002,David Copperfield,Operations,2023-02-22
+tenant_comp_002,usr_b02,comp_002,Eve Harrington,Marketing,2023-03-01
+tenant_comp_003,usr_c01,comp_003,Frank Castle,Field Operations,2023-03-15
+tenant_comp_004,usr_d01,comp_004,Grace Hopper,Finance,2023-04-06

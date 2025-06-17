@@ -1,0 +1,11 @@
+schema_name,transaction_id,user_id,company_id,card_id,transaction_date,merchant_name,merchant_category_code,merchant_category_description,amount_usd,currency,description,last_updated_ts
+tenant_comp_001,txn_cc_001,usr_a01,comp_001,card_x1,2024-03-10T10:15:00Z,AWS Services,7372,COMPUTER PROGRAMMING SVCS,150.00,USD,Monthly cloud hosting,2024-03-10T10:15:01Z
+tenant_comp_001,txn_cc_002,usr_a03,comp_001,card_x2,2024-03-12T13:30:00Z,Zoom Video,7372,COMPUTER PROGRAMMING SVCS,49.99,USD,Software subscription,2024-03-12T13:30:01Z
+tenant_comp_002,txn_cc_003,usr_b01,comp_002,card_y1,2024-03-15T08:00:00Z,Staples,5943,"STATIONERY, OFFICE SUPPLIES",75.25,USD,Office supplies,2024-03-15T08:00:01Z
+tenant_comp_004,txn_cc_004,usr_d01,comp_004,card_z1,2024-03-20T11:00:00Z,Salesforce,7372,COMPUTER PROGRAMMING SVCS,300.00,USD,CRM Subscription,2024-03-20T11:00:01Z
+tenant_comp_001,txn_cc_005,usr_a01,comp_001,card_x1,2024-03-25T19:00:00Z,United Airlines,3000,AIRLINES,450.80,USD,Flight to conference,2024-03-25T19:00:01Z
+tenant_comp_003,txn_cc_006,usr_c01,comp_003,card_w1,2024-03-28T12:45:00Z,Home Depot,5200,HOME SUPPLY WAREHOUSE STORES,120.00,USD,Building materials,2024-03-28T12:45:01Z
+tenant_comp_004,txn_cc_007,usr_d02,comp_004,card_z2,2024-04-01T13:00:00Z,The Capital Grille,5812,RESTAURANTS,550.50,USD,Client dinner,2024-04-01T13:00:01Z
+tenant_comp_002,txn_cc_008,usr_b02,comp_002,card_y2,2024-04-05T10:00:00Z,Meta Ads,7311,ADVERTISING SERVICES,200.00,USD,Ad campaign,2024-04-05T10:00:01Z
+tenant_comp_001,txn_cc_009,usr_a03,comp_001,card_x2,2024-04-08T15:00:00Z,Starbucks,5814,,15.75,USD,Client coffee,2024-04-08T15:00:01Z
+tenant_comp_004,txn_cc_007,usr_d02,comp_004,card_z2,2024-04-01T13:00:00Z,The Capital Grille,5812,RESTAURANTS,550.50,USD,Client dinner,2024-04-01T13:00:05Z
