@@ -1,6 +1,6 @@
 # dbt-takehome @ Finally
 
-This repository implements the multi-tenant dbt + Snowflake take-home project for Finally.
+This repository implements the multi-tenant dbt + Snowflake project.
 
 ## Architecture Overview
 
@@ -59,6 +59,7 @@ Each staging model:
     - Running cumulative totals
     - Outstanding balance using `cumulative_spend - cumulative_repayment`
     - A date spine ensures completeness even for dates with no transactions
+      The date spine begins several months before transaction data appears. I chose this early anchor date to ensure full coverage for any historical joins, future-ingested data, or backfill scenarios. The data could be even earlier to provide a consistent foundation for time-based transformations.
 
 ## Testing Strategy
 

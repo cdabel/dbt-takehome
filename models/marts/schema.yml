@@ -12,3 +12,19 @@ models:
           - not_null
       - name: total_spend_usd
       - name: transaction_count
+
+  - name: fct_daily_outstanding_balance
+    description: Daily outstanding balance per company
+    columns:
+      - name: company_id
+        tests:
+          - not_null
+      - name: date
+        tests:
+          - not_null
+      - name: outstanding_balance_usd
+    tests:
+      - unique:
+          combination_of:
+            - company_id
+            - date

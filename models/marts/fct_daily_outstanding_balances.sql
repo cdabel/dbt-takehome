@@ -42,8 +42,8 @@ joined AS (
     SELECT
         cd.company_id
       , cd.date_day
-      , COALESCE(ds.daily_spend_usd, 0) AS daily_spend_usd
-      , COALESCE(dr.daily_repayment_usd, 0) AS daily_repayment_usd
+      , NVL(ds.daily_spend_usd, 0) AS daily_spend_usd
+      , NVL(dr.daily_repayment_usd, 0) AS daily_repayment_usd
     FROM company_day cd
     LEFT JOIN daily_spend ds
         ON cd.company_id = ds.company_id AND cd.date_day = ds.date_day
