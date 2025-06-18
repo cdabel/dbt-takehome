@@ -38,12 +38,12 @@ daily_repayments AS (
     GROUP BY company_id, date_day
 ),
 
-joined AS (
+daily_spend_and_repayments AS (
     SELECT
         cd.company_id
       , cd.date_day
-      , NVL(ds.daily_spend_usd, 0) AS daily_spend_usd
-      , NVL(dr.daily_repayment_usd, 0) AS daily_repayment_usd
+      , COALESCE(ds.daily_spend_usd, 0) AS daily_spend_usd
+      , COALESCE(dr.daily_repayment_usd, 0) AS daily_repayment_usd
     FROM company_day cd
     LEFT JOIN daily_spend ds
         ON cd.company_id = ds.company_id AND cd.date_day = ds.date_day
@@ -65,4 +65,4 @@ SELECT
   , SUM(daily_spend_usd) OVER (PARTITION BY company_id ORDER BY date_day)
     - SUM(daily_repayment_usd) OVER (PARTITION BY company_id ORDER BY date_day)
     AS outstanding_balance_usd
-FROM joined
+FROM daily_spend_and_repayments
