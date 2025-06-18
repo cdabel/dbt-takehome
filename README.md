@@ -70,10 +70,13 @@ Each staging model:
 ## Performance Considerations
 This project uses views for staging models to prioritize modularity and rapid iteration. However, for real-world datasets at scale (e.g., multi-tenant transaction tables exceeding 200GB), performance tuning would be essential. 
 Key strategies include:
-Clustering Keys: On large fact tables, raw, or stg tables like fct_monthly_company_spend raw corp_card_transactions, clustering by company_id, transaction_date, or both would improve query pruning and scan efficiency in Snowflake.
-Transient Tables in Staging: If the data volume in staging models grows significantly, materializing them as transient tables instead of views or ephemeral models can drastically reduce recomputation costs and improve downstream query performance.
-Incremental Models: For append-only transactional data, converting staging or fact models to incremental materializations would also reduce compute cost over time.
+- Clustering Keys: On large fact tables, raw, or stg tables like fct_monthly_company_spend raw corp_card_transactions, clustering by company_id, transaction_date, or both would improve query pruning and scan efficiency in Snowflake.
+- Transient Tables in Staging: If the data volume in staging models grows significantly, materializing them as transient tables instead of views or ephemeral models can drastically reduce recomputation costs and improve downstream query performance.
+- Incremental Models: For append-only transactional data, converting staging or fact models to incremental materializations would also reduce compute cost over time.
+- The date spine would also need to be persisted as a permanent table to reduce computational cost and the dollar cost of both creating the CROSS JOIN and joining to the date spine, in `fct_daily_outstanding_balances`.
+
 In this take-home, I avoided those techniques to limit complexity, but the codebase can readily accommodate such modifications as scale demands increase.
+
 
 ## Configuration Details
 
