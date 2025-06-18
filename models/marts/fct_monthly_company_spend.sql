@@ -2,7 +2,7 @@
 
 WITH transactions AS (
     SELECT
-        company_id
+        company_id 
       , DATE_TRUNC('month', transaction_date) AS "month"
       , amount_usd
     FROM {{ ref('stg_corp_card_transactions') }}

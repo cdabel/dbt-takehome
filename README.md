@@ -1,4 +1,4 @@
-# dbt-takehome @ Finally
+# dbt-showcase-skills
 
 This repository implements the multi-tenant dbt + Snowflake project.
 
